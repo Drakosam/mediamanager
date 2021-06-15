@@ -60,3 +60,26 @@ def test_collection_image_overflow():
     test_item.add_images_list(image_list)
 
     assert test_item.get_image(100) == ''
+
+
+def test_collection_is_valid():
+    test_item_1 = Collection(name='', path='',images=[])
+    test_item_2 = Collection(name='', path='path',images=['image'])
+    test_item_3 = Collection(name='name', path='',images=['image'])
+    test_item_4 = Collection(name='name', path='path',images=[])
+    test_item_5 = Collection(name='name', path='path',images=['image'])
+
+    assert not test_item_1.valid()
+    assert not test_item_2.valid()
+    assert not test_item_3.valid()
+    assert not test_item_4.valid()
+    assert test_item_5.valid()
+
+def test_collection_size_return_numer_of_images():
+    test_item_1 = Collection(name='name1', path='path1',images=['image_1_1'])
+    test_item_2 = Collection(name='name2', path='path2',images=['image_2_1','image_2_2'])
+    test_item_3 = Collection(name='name3', path='path3',images=['image_3_1','image_3_2','image_3_3'])
+
+    assert test_item_1.size() == 1
+    assert test_item_2.size() == 2
+    assert test_item_3.size() == 3
