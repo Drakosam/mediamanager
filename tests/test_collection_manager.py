@@ -135,3 +135,126 @@ def test_collection_manager_get_image_overflow_pick_collection_by_index_return_e
     test_item.add_collection(collection=test_collection_3)
 
     assert test_item.get_image(image_index=1,collection_index=100) == ''
+
+def test_collection_manager_next_image_show_next_image_in_collection():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_result_1 = test_item.get_image()
+    test_item.next_image()
+    test_result_2 = test_item.get_image() 
+
+    assert test_result_1 == test_collection_1.get_image(0)
+    assert test_result_2 == test_collection_1.get_image(1)
+
+def test_collection_manager_next_image_cycle():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_result_1 = test_item.get_image()
+    test_item.next_image()
+    test_item.next_image()
+    test_item.next_image()
+    test_result_2 = test_item.get_image() 
+
+    assert test_result_1 == test_collection_1.get_image(0)
+    assert test_result_2 == test_collection_1.get_image(0)
+
+def test_collection_manager_next_image_with_minus_step_show_prev_image():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_item.next_image(-1)
+
+    assert test_item.get_image() == test_collection_1.get_image(2)
+
+def test_collection_manager_next_collection_show_next_collection():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_result_1 = test_item.get_image()
+    test_item.next_collection()
+    test_result_2 = test_item.get_image()
+
+    assert test_result_1 == test_collection_1.get_image(0)
+    assert test_result_2 == test_collection_2.get_image(0)
+
+def test_collection_manager_next_collection_show_cycle():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_result_1 = test_item.get_image()
+    test_item.next_collection()
+    test_item.next_collection()
+    test_item.next_collection()
+    test_result_2 = test_item.get_image()
+
+    assert test_result_1 == test_collection_1.get_image(0)
+    assert test_result_2 == test_collection_1.get_image(0)
+
+
+def test_collection_manager_next_collection_with_minus_step_show_prev_collection():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_result_1 = test_item.get_image()
+    test_item.next_collection(-1)
+    test_result_2 = test_item.get_image()
+
+    assert test_result_1 == test_collection_1.get_image(0)
+    assert test_result_2 == test_collection_3.get_image(0)
+
+def test_collection_manager_next_collection_reset_image_index():
+    test_item = CollectionManager()
+
+    test_collection_1 = Collection('111','path1',['img_1_1','img_1_2','img_1_3'])
+    test_collection_2 = Collection('222','path2',['img_2_1','img_2_2','img_2_3'])
+    test_collection_3 = Collection('333','path3',['img_3_1','img_3_2','img_3_3'])
+    test_item.add_collection(collection=test_collection_1)
+    test_item.add_collection(collection=test_collection_2)
+    test_item.add_collection(collection=test_collection_3)
+
+    test_item.next_image(1)
+    test_result_1 = test_item.get_image()
+    test_item.next_collection(1)
+    test_result_2 = test_item.get_image()
+
+    assert test_result_1 == test_collection_1.get_image(1)
+    assert test_result_2 == test_collection_2.get_image(0)
+

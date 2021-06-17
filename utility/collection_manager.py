@@ -11,11 +11,20 @@ class CollectionManager():
         self.show_collection: List[Collection] = []
         self.filter_tags: List[str] = []
 
-    def next_image():
-        pass
+    def next_image(self, step=1):
+        self.image_index += step
+        if self.image_index >= self.collections[self.collection_index].size():
+            self.image_index = 0
+        elif self.image_index < 0:
+            self.image_index = self.collections[self.collection_index].size() - 1
     
-    def next_collection():
-        pass
+    def next_collection(self, step=1):
+        self.collection_index += step
+        if self.collection_index >= len(self.collections):
+            self.collection_index = 0
+        elif self.collection_index < 0:
+            self.collection_index = len(self.collections) - 1
+        self.image_index = 0
 
     def size(self):
         return len(self.collections)
@@ -50,8 +59,8 @@ class CollectionManager():
 
         return self.collections[self.collection_index].get_image(self.image_index)
 
-    def get_collection_names()->List[str]:
+    def get_collection_names(self)->List[str]:
         pass
 
-    def toggle_tag_filter():
+    def toggle_tag_filter(self):
         pass
