@@ -16,12 +16,16 @@ Item{
         acceptedButtons: Qt.NoButton
         hoverEnabled: true
         cursorShape: {
-            return Qt.SizeVerCursor
+            if(type == 'top' || type == 'bottom') return Qt.SizeVerCursor
+            if(type == 'right' || type == 'left') return Qt.SizeHorCursor
+            if(type == 'top-left' || type == 'bottom-right') return Qt.SizeFDiagCursor
+            if(type == 'top-right' || type == 'bottom-left') return Qt.SizeBDiagCursor
+            if(type == 'move') return Qt.ArrowCursor
         }
     }
     Rectangle{
         anchors.fill: parent
-        color:'#ff0000'
+        color:'#000000'
     }
 
 
@@ -35,10 +39,29 @@ Item{
                 window.startSystemResize(Qt.TopEdge);
             }
             else if(type == 'bottom'){
-                itemBorder.y = parent.window - 3
                 window.startSystemResize(Qt.BottomEdge);
             }
-            
+            else if(type == 'right'){
+                window.startSystemResize(Qt.RightEdge);
+            }
+            else if(type == 'left'){
+                window.startSystemResize(Qt.LeftEdge);
+            }
+            else if(type == 'top-left'){
+                window.startSystemResize(Qt.TopEdge|Qt.LeftEdge);
+            }
+            else if(type == 'bottom-right'){
+                window.startSystemResize(Qt.BottomEdge|Qt.RightEdge);
+            }
+            else if(type == 'top-right'){
+                window.startSystemResize(Qt.TopEdge|Qt.RightEdge);
+            }
+            else if(type == 'bottom-left'){
+                window.startSystemResize(Qt.BottomEdge|Qt.LeftEdge);
+            }
+            else if(type == 'move'){
+                window.startSystemMove()
+            }
         }
     
     }
