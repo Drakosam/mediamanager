@@ -27,8 +27,8 @@ Item{
                     Button {
                         id:layoutButton1
                         width:100
-                        height:35
-                        text: "image"
+                        height:25
+                        text: "images"
                         Layout.alignment: Qt.AlignLeft
                         onClicked: {swipeView.currentIndex = 0}
                     }
@@ -36,10 +36,19 @@ Item{
                         id:layoutButton2
                         anchors.left: layoutButton1.right
                         width:100
-                        height:35
+                        height:25
                         text: "collection"
                         Layout.alignment: Qt.AlignLeft
                         onClicked: {swipeView.currentIndex = 1}
+                    }
+                    Button {
+                        id:layoutButton3
+                        anchors.left: layoutButton2 .right
+                        width:100
+                        height:25
+                        text: "settings"
+                        Layout.alignment: Qt.AlignLeft
+                        onClicked: {swipeView.currentIndex = 2}
                     }
                 }
             }
@@ -57,7 +66,13 @@ Item{
                             id: firstPage
                             Rectangle{
                                 anchors.fill: parent
-                                color: '#f00'
+                                color: '#000'
+                                Button {
+                                    text:"ssss"
+                                    onClicked:{
+                                        api.test()
+                                    }
+                                }
                             }
                         }
                         Item {
@@ -80,14 +95,14 @@ Item{
         Button {
             x:parent.width - 35
             width:35
-            height:35
+            height:25
             text: "✖"
             onClicked: {window.close()}
         }
         Button {
             x:parent.width - 35 - 37
             width:35
-            height:35
+            height:25
             text: "▣"
             onClicked: {
                 if(maxi){

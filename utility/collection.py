@@ -2,7 +2,9 @@ from typing import List
 from os import name, path as os_path
 
 class Collection:
-    def __init__(self, name: str= '', path: str= '', images: List[str] =[]) -> None:
+    def __init__(self, name: str= '', path: str= '', images: List[str] = None) -> None:
+        if images is None:
+            images = []
         self.name = name
         self.path = path
         self.images = images

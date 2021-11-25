@@ -1,7 +1,7 @@
 import sys
 import os
 from pathlib import Path
-
+from api.api import Api
 from PySide6.QtCore import QObject, Slot
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
@@ -11,10 +11,10 @@ def run_gui():
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
 
-    # bridge = Bridge()
+    api = Api()
 
-    # context = engine.rootContext()
-    # context.setContextProperty("con", bridge)
+    context = engine.rootContext()
+    context.setContextProperty("api", api)
 
     qmlFile = Path(__file__).parent / 'view.qml'
 
