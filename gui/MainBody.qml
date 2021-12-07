@@ -67,11 +67,8 @@ Item{
                             Rectangle{
                                 anchors.fill: parent
                                 color: '#000'
-                                Button {
-                                    text:"ssss"
-                                    onClicked:{
-                                        api.test()
-                                    }
+                                SelectCollectionWidget{
+                                    anchors.fill: parent
                                 }
                             }
                         }

@@ -6,8 +6,7 @@ import QtQuick.Controls.Material 2.12
 
 Item{
     Rectangle{
-        width: 400
-        height: 400
+        anchors.fill: parent
         color: '#000000'
     }
 }
