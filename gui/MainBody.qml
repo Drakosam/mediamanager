@@ -12,50 +12,10 @@ Item{
         anchors.fill: parent
         color: '#000000'
 
-        ColumnLayout{
-            anchors.fill: parent
-            spacing: 1
             Rectangle{
-                Layout.preferredWidth: mainBody.width
-                Layout.preferredHeight: 35
-                color: '#222'
-
-                RowLayout {
-                    id: layout
-                    anchors.fill: parent
-                    spacing: 1
-                    Button {
-                        id:layoutButton1
-                        width:100
-                        height:25
-                        text: "images"
-                        Layout.alignment: Qt.AlignLeft
-                        onClicked: {swipeView.currentIndex = 0}
-                    }
-                    Button {
-                        id:layoutButton2
-                        anchors.left: layoutButton1.right
-                        width:100
-                        height:25
-                        text: "collection"
-                        Layout.alignment: Qt.AlignLeft
-                        onClicked: {swipeView.currentIndex = 1}
-                    }
-                    Button {
-                        id:layoutButton3
-                        anchors.left: layoutButton2 .right
-                        width:100
-                        height:25
-                        text: "settings"
-                        Layout.alignment: Qt.AlignLeft
-                        onClicked: {swipeView.currentIndex = 2}
-                    }
-                }
-            }
-            Rectangle{
-                Layout.fillHeight: true
-                Layout.preferredWidth: parent.width
-                Layout.preferredHeight: parent.height
+                width:parent.width
+                height: parent.height-35
+                y:35
                 color: '#000'
                 SwipeView {
                         id: swipeView
@@ -87,6 +47,41 @@ Item{
                             }
                         }
                 }
+            }
+
+        Rectangle{
+            width:parent.width
+            height:35
+            Rectangle{
+                anchors.fill: parent
+                color: '#222'
+                    Button {
+
+                        id:layoutButton1
+                        width:100
+                        height:30
+                        text: "images"
+                        onClicked: {swipeView.currentIndex = 0}
+                    }
+                    Button {
+
+                        id:layoutButton2
+                        anchors.left: layoutButton1.right
+                        width:100
+                        height:30
+                        text: "collection"
+                        onClicked: {swipeView.currentIndex = 1}
+                    }
+                    Button {
+
+                        id:layoutButton3
+                        anchors.left: layoutButton2 .right
+                        width:100
+                        height:30
+                        text: "settings"
+                        onClicked: {swipeView.currentIndex = 2}
+                    }
+
             }
         }
         Button {

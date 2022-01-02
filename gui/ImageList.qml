@@ -6,27 +6,87 @@ import QtQuick.Controls.Material 2.12
 
 Item{
     Rectangle{
+        id:listArea
         anchors.fill: parent
         color: '#aaaaaa'
 
-        ListModel {
+        ListView{
             anchors.fill: parent
-            id:listModel
+            model:listModel
+            displayMarginBeginning: -10
+            delegate:Rectangle{
+                height: 40
+                width:listArea.width
+                border.color: "black"
+                border.width: 1
+                Text{
+                    anchors.fill: parent
+                    text:name
+                    horizontalAlignment:Text.AlignHCenter
+                    verticalAlignment:Text.AlignVCenter
+                    wrapMode:Text.WrapAnywhere
+                }
+            }
+        }
 
+        ListModel {
+            id:listModel
             ListElement{
-               name:xxx
+               name:"xxx1"
             }
             ListElement{
-               name:xxx1
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             }
             ListElement{
-               name:xxx2
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             }
             ListElement{
-               name:xxx3
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
             }
             ListElement{
-               name:xxx4
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+            }
+            ListElement{
+               name:"xxx2"
+            }
+            ListElement{
+               name:"xxx3"
+            }
+            ListElement{
+               name:"xxx4"
             }
         }
     }
