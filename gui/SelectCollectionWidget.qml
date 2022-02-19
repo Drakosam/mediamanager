@@ -5,6 +5,7 @@ import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
 
 Item{
+
     Rectangle{
         anchors.fill: parent
         color: '#000000'

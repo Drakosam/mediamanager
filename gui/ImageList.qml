@@ -5,6 +5,12 @@ import QtQuick.Window 2.12
 import QtQuick.Controls.Material 2.12
 
 Item{
+    Connections {
+        target: api
+        function onCollectionListChanged() {
+            refreshList()
+        }
+    }
     Rectangle{
         id:listArea
         anchors.fill: parent
@@ -26,6 +32,13 @@ Item{
                     verticalAlignment:Text.AlignVCenter
                     wrapMode:Text.WrapAnywhere
                 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        api.pickCollection(no_item)
+
+                    }
+                }
             }
         }
 
@@ -33,61 +46,23 @@ Item{
             id:listModel
             ListElement{
                name:"xxx1"
+               no_item:0
             }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-            }
-            ListElement{
-               name:"xxx2"
-            }
-            ListElement{
-               name:"xxx3"
-            }
-            ListElement{
-               name:"xxx4"
-            }
+        }
+    }
+
+    function refreshList(){
+        listModel.clear()
+        var _collectionList = JSON.parse(api.collectionList)
+        for(var i in _collectionList){
+            var item = _collectionList[i]
+            console.log(item.name,i)
+            listModel.append(
+                {
+                    name:item.name,
+                    no_item:item.index
+                }
+            )
         }
     }
 }
