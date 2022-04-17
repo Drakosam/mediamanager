@@ -4,6 +4,8 @@ from PyQt6.QtGui import QMovie, QImage, QPixmap
 from PyQt6.QtWidgets import QLabel
 
 from collection import collection_manager
+from enums.enentNames import EventName
+from utyllity import observer
 from widgets.baseView import BaseView
 
 
@@ -14,6 +16,7 @@ class ImageView(BaseView):
         self.set_background('#000000')
         self.label = QLabel(self)
         self.label.setScaledContents(False)
+        observer.register_event(EventName.NEW_IMAGE, self.update_image)
 
     def update_image(self):
         image = collection_manager.get_image_path()

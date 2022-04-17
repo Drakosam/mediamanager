@@ -1,3 +1,5 @@
+from natsort import natsorted, ns
+
 from os import listdir
 from os.path import isdir, join, isfile
 from typing import List
@@ -37,6 +39,7 @@ class CollectionItem:
     def _update(self):
         if not self.ready:
             self.items = [f for f in listdir(join(self.root, self.name)) if isfile(join(self.root, self.name, f))]
+            self._sort_items()
             self.ready = True
 
     def get_image(self, index_image):
@@ -49,3 +52,6 @@ class CollectionItem:
 
     def get_all_paths(self):
         return [join(self.root, self.name, f) for f in self.items]
+
+    def _sort_items(self):
+        self.items = natsorted(self.items, alg=ns.IGNORECASE)

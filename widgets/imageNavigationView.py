@@ -2,6 +2,8 @@ from PyQt6.QtCore import QTimer
 from PyQt6.QtWidgets import QPushButton
 
 from collection import collection_manager
+from enums.enentNames import EventName
+from utyllity import observer
 from widgets.baseView import BaseView
 
 
@@ -37,29 +39,35 @@ class ImageNavigationView(BaseView):
         self.but_run_auto.clicked.connect(self._but_run_auto)
         self.but_tag_for_show.clicked.connect(self._but_next_tag_for_show)
 
-    def _but_prev_image_action(self):
+    @staticmethod
+    def _but_prev_image_action():
         collection_manager.prev_image()
-        self._parent.update_proc()
+        observer.call_event(EventName.NEW_IMAGE)
 
-    def _but_next_image_action(self):
+    @staticmethod
+    def _but_next_image_action():
         collection_manager.next_image()
-        self._parent.update_proc()
+        observer.call_event(EventName.NEW_IMAGE)
 
-    def _but_prev_collection_action(self):
+    @staticmethod
+    def _but_prev_collection_action():
         collection_manager.prev_collection()
-        self._parent.update_proc()
+        observer.call_event(EventName.NEW_IMAGE)
 
-    def _but_next_collection_action(self):
+    @staticmethod
+    def _but_next_collection_action():
         collection_manager.next_collection()
-        self._parent.update_proc()
+        observer.call_event(EventName.NEW_IMAGE)
 
-    def _next_in_show(self):
+    @staticmethod
+    def _next_in_show():
         collection_manager.next_in_show()
-        self._parent.update_proc()
+        observer.call_event(EventName.NEW_IMAGE)
 
     @staticmethod
     def _but_next_tag_for_show():
         collection_manager.tag_ass_part_of_show()
+        observer.call_event(EventName.NEW_IMAGE)
 
     def _but_run_auto(self):
         if not self.timer_run:
