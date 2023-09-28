@@ -39,6 +39,10 @@ class ImageNavigationView(BaseView):
         self.but_run_auto.clicked.connect(self._but_run_auto)
         self.but_tag_for_show.clicked.connect(self._but_next_tag_for_show)
 
+
+    def set_simpe_view(self):
+        self.but_run_auto.hide()
+        self.but_tag_for_show.hide()
     @staticmethod
     def _but_prev_image_action():
         collection_manager.prev_image()

@@ -28,6 +28,9 @@ class CollectionStore:
         index = self.get_collection_index_by_name(collection_name)
         return self.collection[index].get_all_paths()
 
+    def update_tag_collection(self, index, tags):
+        print(index, tags)
+
 
 class CollectionItem:
     def __init__(self, root, name):
@@ -35,6 +38,7 @@ class CollectionItem:
         self.root = root
         self.ready = False
         self.items = []
+        self.tags = ''
 
     def _update(self):
         if not self.ready:
