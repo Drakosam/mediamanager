@@ -1,8 +1,8 @@
-from widgets.baseView import BaseView
+from widgets.shered.baseView import BaseView
 
-from widgets.collectionListView import CollectionListView
-from widgets.imageNavigationView import ImageNavigationView
-from widgets.imageView import ImageView
+from widgets.commponent.collectionListView import CollectionListView
+from widgets.commponent.imageNavigationView import ImageNavigationView
+from widgets.commponent.imageView import ImageView
 
 
 class MainCollectionView(BaseView):

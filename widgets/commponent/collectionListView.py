@@ -2,8 +2,8 @@
 from collection import collection_manager
 from enums.enentNames import EventName
 from utyllity import observer
-from widgets.baseView import BaseView
-from widgets.customListWidged import CustomListWidget
+from widgets.shered.baseView import BaseView
+from widgets.commponent.customListWidged import CustomListWidget
 
 
 class CollectionListView(BaseView):

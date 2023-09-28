@@ -1,4 +1,4 @@
-from widgets.baseView import BaseView
+from widgets.shered.baseView import BaseView
 
 
 class MainTagView(BaseView):

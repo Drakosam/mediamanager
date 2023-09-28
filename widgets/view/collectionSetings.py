@@ -1,11 +1,10 @@
-from PyQt6 import QtCore
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QPushButton, QFileDialog, QWidget, QLabel
 
 from collection import collection_manager
 from enums.enentNames import EventName
 from utyllity import observer
-from widgets.baseView import BaseView
+from widgets.shered.baseView import BaseView
 
 
 class CollectionSettings(BaseView):

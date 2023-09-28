@@ -1,8 +1,8 @@
 from PyQt6.QtWidgets import QMainWindow, QTabWidget
 
-from widgets.collectionSetings import CollectionSettings
-from widgets.mainCollectionView import MainCollectionView
-from widgets.mainTagView import MainTagView
+from widgets.view.collectionSetings import CollectionSettings
+from widgets.view.mainCollectionView import MainCollectionView
+from widgets.view.mainTagView import MainTagView
 
 
 class MainView(QMainWindow):

@@ -75,8 +75,10 @@ class CollectionManage:
             self.image_in_show = []
             for name in self.collection_in_show:
                 self.image_in_show += self.store.get_all_paths_for_collection(name)
-        self.auto_run = True
-        self.show_index = 0
+            self.auto_run = True
+            self.show_index = 0
+            return True
+        return False
 
     def stop_auto_run(self):
         self.auto_run = False

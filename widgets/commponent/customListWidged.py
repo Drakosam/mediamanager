@@ -1,7 +1,7 @@
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QScrollArea, QPushButton, QWidget, QVBoxLayout, QLabel, QHBoxLayout
 
-from widgets.baseView import BaseView
+from widgets.shered.baseView import BaseView
 from collection import collection_manager
 from enums.enentNames import EventName
 from utyllity import observer

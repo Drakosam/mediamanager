@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QLabel
 from collection import collection_manager
 from enums.enentNames import EventName
 from utyllity import observer
-from widgets.baseView import BaseView
+from widgets.shered.baseView import BaseView
 
 
 class ImageView(BaseView):

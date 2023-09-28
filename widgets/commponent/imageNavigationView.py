@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QPushButton
 from collection import collection_manager
 from enums.enentNames import EventName
 from utyllity import observer
-from widgets.baseView import BaseView
+from widgets.shered.baseView import BaseView
 
 
 class ImageNavigationView(BaseView):
@@ -71,10 +71,11 @@ class ImageNavigationView(BaseView):
 
     def _but_run_auto(self):
         if not self.timer_run:
-            self.timer.start(3000)
-            self.timer_run = True
-            self.but_run_auto.setText('STOP')
-            collection_manager.start_auto_run()
+            if collection_manager.start_auto_run():
+                self.timer.start(3000)
+                self.timer_run = True
+                self.but_run_auto.setText('STOP')
+                collection_manager.start_auto_run()
         else:
             self.timer_run = False
             self.timer.stop()
